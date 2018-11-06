@@ -13,6 +13,7 @@ P = eye(n);
 p=1;
 q=2;
 
+%First Value of Sk:
 Sk=0;
 for i =1:n
     for j =1:n
@@ -22,6 +23,7 @@ for i =1:n
     end
 end
 
+%loop for the iteration:
 while Sk > 0.0001
     
     Theta = (Ai(q,q)- Ai(p,p))/(2*Ai(p,q));
@@ -34,6 +36,7 @@ while Sk > 0.0001
     c = 1/sqrt(t^2+1);
     s = t*c;
     
+    %definition of Pk:
     Pk = eye(n);
     Pk(p,p) = c;
     Pk(q,q) = c;
@@ -42,10 +45,10 @@ while Sk > 0.0001
     
     P = P*Pk;
         
-    disp(Pk)
     Ai = transpose(Pk)*Ai*Pk;
 
     Sk=0;
+    % calculate the Error
     for i =1:n
         for j =1:n
             if(i ~= j)
@@ -54,8 +57,9 @@ while Sk > 0.0001
         end
     end
     
+    %another Pk-Matrix for a different p-q-plane:
     q = q+1;
-
+    
     if(q>n)
         p = p+1;
         q = p+1;
@@ -70,9 +74,9 @@ end
 %Compare with the function eig
 [V,M] = eig(A);
 
-disp('own solution:')
+disp('own solution')
 disp(Ai)
-diso('The solution of matlab:')
+disp('The solution of matlab:')
 disp(M)
 
 disp('eig()')
