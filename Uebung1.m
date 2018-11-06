@@ -42,10 +42,6 @@ while Sk > 0.0001
     
     P = P*Pk;
         
-    disp('p = ')
-    disp(p)
-    disp('q = ')
-    disp(q)
     disp(Pk)
     Ai = transpose(Pk)*Ai*Pk;
 
@@ -74,8 +70,9 @@ end
 %Compare with the function eig
 [V,M] = eig(A);
 
-disp('own solution')
+disp('own solution:')
 disp(Ai)
+diso('The solution of matlab:')
 disp(M)
 
 disp('eig()')
