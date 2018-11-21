@@ -1,0 +1,24 @@
+Y = double(imread('test_image.tif','TIF'));
+dim = size(Y);
+
+YY = zeros(64,100,125);
+n = 8;%number of blocks per dimension
+lengthh = dim(1)/n;
+height = dim(2)/n;
+k = 1;
+for ii = 1:n
+    for jj = 1:n
+    YY(k,:,:)   = Y((lengthh*(ii-1)+1):lengthh*ii,height*(jj-1)+1:height*jj) ;
+    k = k +1;
+    end
+end
+SplitImage = mat2cell( OriginalImage, 8 * ones(1,size(OriginalImage,1)/8), 8 * ones(1,size(OriginalImage,2)/8), size(OriginalImage,3) );
+
+
+
+figure('Units', 'pixels','position',[1 1 20+dim(2) 20+dim(1)])
+ax=axes('Units', 'pixels', 'position', [10, 10, dim(2), dim(1)],'visible','off');
+hold on;
+figure(1);
+image(Y(1),'parent',ax);
+colormap(gray(256)); % correct mapping: values<->colors
