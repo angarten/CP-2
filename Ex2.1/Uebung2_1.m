@@ -10,7 +10,7 @@ N2 = dim(2);
 %the DCT transformation:
 A = DCT(Y);
 
-% Exercise 2.3
+%% Exercise 2.3
 C1 = crop(A,0.1);
 C1( ~any(C1,2), : ) = [];  %rows
 C1( :, ~any(C1,1) ) = [];  %columns
@@ -75,7 +75,7 @@ numel(B3)/numel(Y)
 % image(A)
 % colormap(gray(256));
 
-% %Exercise 1.4
+%%Exercise 1.4
 % NN = 8*ones(1,8);
 % B = mat2cell(Y,NN,NN);
 % B{1,1}
